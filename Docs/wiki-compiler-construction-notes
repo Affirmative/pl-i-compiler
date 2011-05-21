@@ -33,4 +33,22 @@ also creates IR code.  That IR code is then translated into the target
 language: code generation.  It choses the right "target instruction" for
 each IR instruction. Registers in the CPU are chosen, etc.
 
+### 2 Intrepreters
+
+Although both interpreters and compilers transform their source code into
+something different, a compiler leaves the final execution of the program
+to the operating system, ergo transforming it into a format the OS can run,
+whereas an interpreters runs the transformed source code itself.
+
+Intrepreters are generally slower than compilers because the interpreter
+must analyse the code each time it is run, with the qualified and partial
+exception of some formats, whereas that is already done in compiled code.
+
+The term bytecode interpreter is used to designate transformed, and generally
+more efficient, source code that an interpreter runs.  Abstract Syntax Trees
+appear to be a datastructure that better represents the structure of the
+program than bytecode; self-same statements need be parsed only once by
+the interpreter, at at cost of traversing the tree.  Just-In-Time interpreters,
+like Java, compile certain parts of the code at runtime.
+
 
