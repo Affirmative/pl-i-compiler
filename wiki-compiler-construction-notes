@@ -1,8 +1,17 @@
 http://en.wikipedia.org/wiki/Book:Compiler_construction
 
-### Intro
+### 0 Intro
 
-So, we're dealing with syntax, how we use characters to represent meaning,
+So, we're dealing with syntax, how we use characters to represent an 'element',
 grammar, the ways in which we are allowed to combine elements to make valid
-statements, and semantics, the expression of what we want to achieve.
+combinations, and semantics, the expression of what we want to achieve, using
+the combination of the aforementions elements.
 
+### 1 Compiler
+
+A compiler simple converts one language to another.  It determines the
+correctness of the syntax, generates correct and efficient object code, 
+performs run-time organisation and formats the output according to 
+assembler and/or linker conventions--whatever all that exactly means.
+
+ 
