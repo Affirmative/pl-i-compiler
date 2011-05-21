@@ -1,3 +1,8 @@
 http://en.wikipedia.org/wiki/Book:Compiler_construction
 
+### Intro
+
+So, we're dealing with syntax, how we use characters to represent meaning,
+grammar, the ways in which we are allowed to combine elements to make valid
+statements, and semantics, the expression of what we want to achieve.
 
