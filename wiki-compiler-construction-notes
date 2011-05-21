@@ -14,4 +14,11 @@ correctness of the syntax, generates correct and efficient object code,
 performs run-time organisation and formats the output according to 
 assembler and/or linker conventions--whatever all that exactly means.
 
- 
+It's divided up into the front, middle and back end. Front: Checks the
+syntax and semantics, checks for type errors, and reports back to user 
+if there's a problem. It produces, all being well, intermediate object
+code: a intermediate representation (IR) of the source code.  Middle:
+Removes uselss code, propogation of constant values, takes calculations
+out of loops. This also creates IR code. Back: This translates the IR
+code into assembly code. It choses the right "target instruction" for
+each IR instruction. Registers in the CPU are chosen. 
