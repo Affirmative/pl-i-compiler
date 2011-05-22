@@ -47,8 +47,55 @@ exception of some formats, whereas that is already done in compiled code.
 The term bytecode interpreter is used to designate transformed, and generally
 more efficient, source code that an interpreter runs.  Abstract Syntax Trees
 appear to be a datastructure that better represents the structure of the
-program than bytecode; self-same statements need be parsed only once by
-the interpreter, at at cost of traversing the tree.  Just-In-Time interpreters,
+program than bytecode; self-same statements need be parsed only once by the
+interpreter, at at cost of traversing the tree.  Just-In-Time interpreters,
 like Java, compile certain parts of the code at runtime.
 
+### 3 Lexical Analysis
+
+Tokenisation, as it's often called, is just the conversion of text strings,
+via regular expressions usually, into various tokens, such as 'identifier',
+'number', 'end statement' etc.
+
+The lexer program does not do anything with the tokens it creates, not
+even checking that opening parentheses are closed.  It leaves that stuff to
+the parser.
+
+The scanner part of a lexer looks at the characters to determine the type of
+token it has to hand.  This is sometimes based on a finite state machine.
+The tokenizer then categorises what the scanner has given it, often using
+an evaluator, to grab a value from a token.
+
+Lex is used for fast and simple grammar, but the most complex it becomes other
+tools are used (perhaps like ragel?). Gcc, for example, uses hand-crafted
+lexers.
+
+### 4 Finite-state machine
+
+This is a computer program that takes in a sequential number of symbols
+as input and transitions to a fixed number of internal states, taking into
+account the previous state, all depending on a certain set of accepted states.
+State changes seem to depend on input and the current state. I.e. Input X
+and state B will result in state c.
+
+There are various 'actions' that are performed with the FSM. An entry action
+happens when the state is first entered, an exit action as you can imagine,
+an input action depending on the present state and input conditions, and
+finally a transition action which happens /during/ a transition.
+
+An acceptor/recognizer FSM produces a accept/reject output, not using any
+'actions' at all.  If it took only the word 'nice' in, it would produce
+an accept result if 'nice' was inputted, and a reject results if 'nica'
+was inputted.
+
+Transducers use actions and input to produce output.  They are often used
+control applications.  A Moore machine only uses entry actions to control
+something: it goes into one state and so a new action occurs.  A Mealy machine
+uses input /and/ current state to control the application: the equivalent
+of saying if this state AND this input.
+
+Determinism is whether we know if the state has exactly one transition (DFA) or
+if it has many (NFA: Non-deterministic finite automata).  This is a useless
+concept when many FSMs have to work together.  An algorithm can convert DFA to
+NFAs.
 
