@@ -1,6 +1,8 @@
 http://en.wikipedia.org/wiki/Book:Compiler_construction
 
-### 0 Intro
+### --- Intro ---
+
+### 0 Compiler construction: Intro
 
 So, we're dealing with syntax, how we use characters to represent an 'element',
 grammar, the ways in which we are allowed to combine elements to make valid
@@ -51,7 +53,9 @@ program than bytecode; self-same statements need be parsed only once by the
 interpreter, at at cost of traversing the tree.  Just-In-Time interpreters,
 like Java, compile certain parts of the code at runtime.
 
-### 3 Lexical Analysis
+### --- Lexical Analysis ---
+
+### 3 Lexical Analysis: Intro
 
 Tokenisation, as it's often called, is just the conversion of text strings,
 via regular expressions usually, into various tokens, such as 'identifier',
@@ -94,8 +98,73 @@ something: it goes into one state and so a new action occurs.  A Mealy machine
 uses input /and/ current state to control the application: the equivalent
 of saying if this state AND this input.
 
-Determinism is whether we know if the state has exactly one transition (DFA) or
-if it has many (NFA: Non-deterministic finite automata).  This is a useless
-concept when many FSMs have to work together.  An algorithm can convert DFA to
-NFAs.
+Determinism is whether we know if the state has exactly one transition
+(DFA) or if it has many (NFA: Non-deterministic finite automata).  This is
+a useless concept when many FSMs have to work together.  An algorithm can
+convert DFA to NFAs.
+
+### 5 Preprocessor
+
+This takes input and outputs in a format useful to another program,
+i.e. macros in the c programming language being convereted into c code.
+A lexical preprocessor is basically a lexer, as described above, meaning it
+knows nothing of the underlying language, leaving all that to the parser.
+M4 is another lexical parser used on the unix system.  The c preprocessor
+can be used, for example, to define a set of javascript like syntax that
+are converted to c syntax at compile time.
+
+### --- Syntactic analysis ---
+
+## 6 Parsing
+
+Parsing is the act of getting a series of tokens to determine their grammatical
+structure based on a 'formal' grammar.  Although the grammatical strucuture is
+checked, type checking, for example, is not included in grammatical checking:
+it is more concerned with values rather than correct composition.
+
+After code is parsed as valid, its intention is the evaluated and the
+appropriate action is then undertook, i.e. code generation.
+
+Top down parsing uses a tree structure to determine, from left to right,
+the correct grammatical structure for the input.  LL and recursive-descent
+parser are examples.  Bottom-up parsing takes the smallest element in the
+input and works its way up to the largest element. LR and Shift-Reduce is
+a type of this kind.
+
+A parser either reduces, that is it takes tokens and reduces them down to
+a grammatical type such as addition or assignment or such, or shifts onto
+the stack, that is it remembers the token for future analysis with the
+subsequent tokens.
+
+### 7 Lookhead
+
+A lookhead type of parser looks at later input while analysing the current
+input in order to make better decisions on the grammar, i.e. to look ahead
+to find a multiplication symbol to ensure that is caculated before addition.
+In terms of shift/reduce it shifts things before reducing them; it reduces
+after it's looked at subsequent tokens.
+
+### 8 Symbol table
+
+A symbol table is used to map the tokens, such as function names or variables,
+to information about such, such as their location and type.  A linker will
+use this table to resolve any global indentifiers, such as the location of
+an external library function.
+
+### 9 Abstract Syntax Trees
+
+AST differ from parse trees because they express the explict information,
+such as if-else possibilies, using nodes, such as their being only two child
+nodes, whereas parse trees will explicitly state this, apparently.
+
+### 10 Context-free grammar
+
+This is the method of breaking down a set of tokens from their smallest
+part, combining such, into the full statement.  Block structure results from
+this: that is, blocks in a if else statement, for example, make up the whole.
+
+CFG have a set of variables and terminal characters. The expression
+(S) has two terminal characters and one variable. Using rules this can be
+expaneded to (((S)S)S) etc.
+
 
