@@ -1,6 +1,6 @@
 Basics of compiler design - Torben Aegidius Mogensen
 
-Chapter 1
+### Chapter 1
 
 Loose phases: Lexical analysis (breaking the source code up into tokens;
 keywords, numbers, etc.), Syntactical analysis/Parsing (taking those tokens
@@ -13,4 +13,20 @@ hardward), machine code generation (creation of the asm for the specific
 machine), assembly and linking (assembly language in converted into binary,
 and addresses of variables and functions--surely external?--are determined).
 
+The first tree, lexical analysis, syntactical analysis and type checking
+are the front end. Register allocation, machine code generation and assembly
+and linking are the back end. Intermediate code generation, along with its
+optimisation, is oftentimes called the middle part. Assembly and linking
+is typically done by programs suuplied by the operating system, and are not
+touched upon here.
 
+Interpreters are similar to compilers, and the stages above, but an intepreters
+run the commands in the syntax tree. As interpreters may need to repeatedly
+process a part of the syntax tree, they're generally slower than compilers,
+which presumably optimises that stuff. Interpeters are generally easier to
+create, and may help development time by their interactive nature, where
+testing code is more important than speed of execution. Interpreters are
+not the main focus of this book.
+
+Knowing about compiler construction may help with creating Domain speific
+languages.
