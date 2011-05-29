@@ -2,4 +2,15 @@ Basics of compiler design - Torben Aegidius Mogensen
 
 Chapter 1
 
+Loose phases: Lexical analysis (breaking the source code up into tokens;
+keywords, numbers, etc.), Syntactical analysis/Parsing (taking those tokens
+and crating a syntax tree, which represents the structure of the program),
+type checkking (making sure variables are declared before use, booleans
+not used as strings, etc), Intermediate code generation (creating of a
+machine-indepenedent language), register allocation (symbolic variable names
+in the intemediate code is translated into cpu registers used in the actual
+hardward), machine code generation (creation of the asm for the specific
+machine), assembly and linking (assembly language in converted into binary,
+and addresses of variables and functions--surely external?--are determined).
+
 
